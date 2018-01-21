@@ -2,6 +2,7 @@ package com.mohbou.realmapplication;
 
 
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 
@@ -13,6 +14,8 @@ public class User extends RealmObject {
 
     private String lastName;
     private String firstName;
+
+    private RealmList<Email> mEmail;
 
     @Ignore
     private  int sessionId;
@@ -42,6 +45,14 @@ public class User extends RealmObject {
         this.firstName = firstName;
     }
 
+    public RealmList<Email> getEmail() {
+        return mEmail;
+    }
+
+    public void setEmail(RealmList<Email> email) {
+        mEmail = email;
+    }
+
     public int getSessionId() {
         return sessionId;
     }
@@ -56,6 +67,10 @@ public class User extends RealmObject {
                 "userId=" + userId +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
+                ", email1='" + mEmail.get(1).getAddress() + '\'' +
+                ", email1='" + mEmail.get(1).isActive() + '\'' +
+                ", email2='" + mEmail.get(1).getAddress() + '\'' +
+                ", email2='" + mEmail.get(1).isActive() + '\'' +
                 ", sessionId=" + sessionId +
                 '}';
     }
